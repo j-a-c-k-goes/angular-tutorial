@@ -1,8 +1,29 @@
-<!-- Uppercase via Built-in pipe -->
-<!-- <h2>{{hero.name | uppercase}} Details</h2> -->
-<h2>{{hero.name}} Details</h2>
+content_copy
+<h2>My Heroes</h2>
+
 <div>
-	<label for="name">Hero Name:</label>
-	<input id="name" [(ngModel)]="hero.name" placeholder="name">
-	<div><span>id: </span>{{hero.id}}</div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
 </div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button type="button" class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+  </li>
+</ul>
+
+<!-- Discard -->
+<!-- <button type="button" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+			<span class="badge">{{hero.id}} </span>
+			<span class="name">{{hero.name}}</span>
+		</button> -->
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->

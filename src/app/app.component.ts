@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Association of Information Technology Professionals @ Georgia Piedmont Technical College';
+  title = 'Tour of Heroes';
 }

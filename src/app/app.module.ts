@@ -1,23 +1,41 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // NgModel here
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms'; // NgModel here
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
-import { XyzComponent } from './xyz/xyz.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { MessagesComponent } from './messages/messages.component';
+import { XyzComponent } from './xyz/xyz.component';
+
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    XyzComponent,
-    HeroesComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    HttpClientModule,
+    // Remove when actual server being used
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false })
   ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent,
+    HeroSearchComponent,
+    XyzComponent,
+  ],
+  bootstrap: [AppComponent],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
